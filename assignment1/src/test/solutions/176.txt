@@ -1,0 +1,1 @@
+dynamic,var,var,dynamic,<EOF>

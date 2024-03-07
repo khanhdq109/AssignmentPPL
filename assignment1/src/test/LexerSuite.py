@@ -261,53 +261,51 @@ class LexerSuite(unittest.TestCase):
         
     # String
     def test_51(self):
-        input = """This is a string"""
-        expect = "This is a string,<EOF>"
+        input = """ "" """
+        expect = ",<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 151))
         
     def test_52(self):
-        input = """"""
-        expect = "\n,\n,<EOF>"
+        input = """ "String" """
+        expect = "String,<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 152))
         
     def test_53(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "This is a string" """
+        expect = "This is a string,<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 153))
         
     def test_54(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "This is a string containing tab \t" """
+        expect = "This is a string containing tab \t,<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 154))
         
     def test_55(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "'"" """
+        expect = """'",<EOF>"""
         self.assertTrue(TestLexer.test(input, expect, 155))
         
     def test_56(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "He asked me: '"Where is John?'"" """
+        expect = """He asked me: '"Where is John?'",<EOF>"""
         self.assertTrue(TestLexer.test(input, expect, 156))
         
     def test_57(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "Some escape: \b \f\t" """
+        expect = """Some escape: \b \f\t,<EOF>"""
         self.assertTrue(TestLexer.test(input, expect, 157))
         
     def test_58(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "\\n \\\\ \\\'" """
+        expect = """\\n \\\\ \\\',<EOF>"""
         self.assertTrue(TestLexer.test(input, expect, 158))
         
     def test_59(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "String"""
+        expect = """Unclosed String: String"""
         self.assertTrue(TestLexer.test(input, expect, 159))
         
     def test_60(self):
-        input = "\n\n"
-        expect = "\n,\n,<EOF>"
+        input = """ "Some illegal escape: \\d  \h and more" """
+        expect = """Illegal Escape In String: Some illegal escape: \\d"""
         self.assertTrue(TestLexer.test(input, expect, 160))
-    
-    # Combine
