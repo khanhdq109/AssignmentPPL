@@ -104,6 +104,11 @@ class ZCodeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ZCodeParser#notnewlinestmt.
+    def visitNotnewlinestmt(self, ctx:ZCodeParser.NotnewlinestmtContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ZCodeParser#assignstmt.
     def visitAssignstmt(self, ctx:ZCodeParser.AssignstmtContext):
         return self.visitChildren(ctx)

@@ -33,14 +33,16 @@ vardecl: (typ | DYNAMIC) IDENTIFIER (ASSIGN exp)?
 	| VAR IDENTIFIER ASSIGN exp;
 arrdecl: typ IDENTIFIER LSB numlistprime RSB (ASSIGN exp)?;
 paramdecl: typ IDENTIFIER (LSB numlistprime RSB)?;
-funcdecl: FUNC IDENTIFIER LB paramdecllist RB newlinelist ((returnstmt | blockstmt) newlinelist)?;
+funcdecl: FUNC IDENTIFIER LB paramdecllist RB newlinelist (returnstmt | blockstmt)?;
 
 // Statement
-stmt: (vardecl | arrdecl | assignstmt | ifstmt | forstmt | breakstmt | continuestmt
-	| returnstmt | callstmt | blockstmt) newlinelistprime;
+stmt: (vardecl | arrdecl | assignstmt | ifstmt | forstmt 
+	| breakstmt | continuestmt | returnstmt | callstmt | blockstmt) newlinelistprime;
+notnewlinestmt: vardecl | arrdecl | assignstmt | ifstmt | forstmt 
+	| breakstmt | continuestmt | returnstmt | callstmt | blockstmt;
 assignstmt: lhs ASSIGN exp;
-ifstmt: IF exp newlinelist stmt (ELIF exp newlinelist stmt)* (ELSE newlinelist stmt)?;
-forstmt: FOR IDENTIFIER UNTIL exp BY exp newlinelist stmt;
+ifstmt: IF exp newlinelist notnewlinestmt (newlinelistprime ELIF exp newlinelist notnewlinestmt)* (newlinelistprime ELSE newlinelist notnewlinestmt)?;
+forstmt: FOR IDENTIFIER UNTIL exp BY exp newlinelist notnewlinestmt;
 breakstmt: BREAK;
 continuestmt: CONTINUE;
 returnstmt: RETURN exp?;

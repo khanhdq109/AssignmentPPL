@@ -1,0 +1,5 @@
+func main() begin
+            aPI <- 3.14
+            l[3] <- value * aPi
+        end
+        
