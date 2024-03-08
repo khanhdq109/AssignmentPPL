@@ -199,5 +199,10 @@ class ZCodeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ZCodeParser#lhs.
+    def visitLhs(self, ctx:ZCodeParser.LhsContext):
+        return self.visitChildren(ctx)
+
+
 
 del ZCodeParser

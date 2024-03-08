@@ -32,7 +32,7 @@ decl: (vardecl | arrdecl | funcdecl) newlinelistprime;
 vardecl: (typ | DYNAMIC) IDENTIFIER (ASSIGN exp)?
 	| VAR IDENTIFIER ASSIGN exp;
 arrdecl: typ IDENTIFIER LSB numlistprime RSB (ASSIGN exp)?;
-paramdecl: typ IDENTIFIER;
+paramdecl: typ IDENTIFIER (LSB numlistprime RSB)?;
 funcdecl: FUNC IDENTIFIER LB paramdecllist RB newlinelist ((returnstmt | blockstmt) newlinelist)?;
 
 // Statement

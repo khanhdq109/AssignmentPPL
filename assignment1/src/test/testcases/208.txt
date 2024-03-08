@@ -1,0 +1,5 @@
+func main() begin
+            result <- s1 and s2
+            result <- s1 or s2
+        end
+        
