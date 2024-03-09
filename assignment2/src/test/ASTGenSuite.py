@@ -8,4 +8,4 @@ class ASTGenSuite(unittest.TestCase):
         input = """number a
         """
         expect = str(Program([VarDecl(Id("a"), NumberType())]))
-        self.assertTrue(TestAST.test(input, expect, 300))
+        self.assertTrue(TestAST.test(input, expect, 301))

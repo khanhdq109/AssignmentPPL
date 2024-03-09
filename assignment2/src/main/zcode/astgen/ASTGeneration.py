@@ -84,6 +84,7 @@ class ASTGeneration(ZCodeVisitor):
         if ctx.typ():
             varType = self.visit(ctx.typ())
         modifier = None
+        varInit = None
         if ctx.ASSIGN():
             varInit = self.visit(ctx.exp())
         return VarDecl(name, varType, modifier, varInit)
@@ -95,6 +96,7 @@ class ASTGeneration(ZCodeVisitor):
         eleType = self.visit(ctx.typ())
         varType = ArrayType(size, eleType)
         modifier = None
+        varInit = None
         if ctx.ASSIGN():
             varInit = self.visit(ctx.exp())
         return VarDecl(name, varType, modifier, varInit)
