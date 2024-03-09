@@ -1,0 +1,24 @@
+
+        func findGCD(number a, number b)
+        begin
+            begin
+                var temp <- b
+                b <- a % b
+                a <- temp
+            end
+            return a
+        end
+
+        func findLCM(number a, number b)
+        begin
+            return (a * b) / findGCD(a, b)
+        end
+
+        func main()
+        begin
+            number num1 <- 15
+            number num2 <- 25
+            var gcd <- findGCD(num1, num2)
+            var lcm <- findLCM(num1, num2)
+        end
+        

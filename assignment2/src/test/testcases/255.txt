@@ -1,0 +1,18 @@
+
+        func printPattern(number n)
+            begin
+                for i until i <= n by 1
+                begin
+                    for j until j <= i by 1
+                    begin
+                        writeNumber(j)
+                    end
+                    writeString("")
+                end
+            end
+            
+        func main()
+            begin
+                printPattern(4)
+            end
+        

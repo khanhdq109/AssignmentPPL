@@ -1,0 +1,12 @@
+
+        func findSum(number a, number b)
+        begin
+            return a + b
+        end
+        func main()
+        begin
+            var num1 <- 10
+            var num2 <- 20
+            var total <- findSum(num1, num2)
+        end
+        

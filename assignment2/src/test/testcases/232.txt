@@ -1,0 +1,4 @@
+func printName(string name) begin
+            writeString(name)
+        end
+        

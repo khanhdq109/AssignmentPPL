@@ -1,0 +1,12 @@
+
+        func giaithua(number n)
+        begin 
+            if n <= 1 return 1
+            return n * giaithua(n - 1)
+        end
+        func main()
+        begin
+            n <- readNumber()
+            writeString("n! = ", giaithua(n))
+        end
+        

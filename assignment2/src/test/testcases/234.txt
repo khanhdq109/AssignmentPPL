@@ -1,0 +1,4 @@
+func greetPerson(string name) begin
+            writeString("Hello, ", name, "!")
+        end
+        

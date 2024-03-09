@@ -1,0 +1,18 @@
+
+        func generateFibonacci(number n)
+        begin
+            number fibo[50]
+            fibo[0] <- 0
+            fibo[1] <- 1
+            for i until i < n by 1
+            begin
+                fibo[i + 1] <- fibo[i] + fibo[i - 1]
+            end
+            return fibo
+        end
+        func main()
+        begin
+            var count <- 10
+            var fibonacciSeries <- generateFibonacci(count)
+        end
+        

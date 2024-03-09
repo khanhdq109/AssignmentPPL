@@ -1,0 +1,1 @@
+ "Some illegal escape: \d  \h and more" 

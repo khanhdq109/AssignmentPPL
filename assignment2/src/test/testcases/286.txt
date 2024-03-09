@@ -1,0 +1,12 @@
+
+        func greet(string name)
+        begin
+            writeString("Hello, ", name, "!")
+        end
+
+        func main()
+        begin
+            var userName <- "Alice"
+            greet(userName)
+        end
+        

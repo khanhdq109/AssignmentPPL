@@ -1,0 +1,4 @@
+func main() begin
+            result <- s1 ... s2
+        end
+        

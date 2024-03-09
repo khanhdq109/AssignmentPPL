@@ -1,0 +1,18 @@
+
+        func calculatePower(number base, number exponent)
+        begin
+            var result <- 1
+            for i until i <= exponent by 1
+            begin
+                result <- result * base
+            end
+            return result
+        end
+
+        func main()
+        begin
+            number x <- 2
+            number exp <- 5
+            var powerResult <- calculatePower(x, exp)
+        end
+        

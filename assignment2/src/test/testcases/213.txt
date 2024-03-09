@@ -1,0 +1,12 @@
+func foo(number a[5], string b)
+        begin
+            if i < 5
+                return -1 
+            elif i >= 9
+                continue
+            elif i == 9
+                break
+            else
+                return
+        end
+        

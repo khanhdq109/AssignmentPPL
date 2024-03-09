@@ -1,0 +1,16 @@
+
+        
+        
+        func isVowel(string ch)
+        begin 
+            return ch = "a"
+        end
+
+        func main()
+        begin
+            var letter <- "o"
+            var checkVowel <- isVowel(letter)
+        end
+        
+        
+        

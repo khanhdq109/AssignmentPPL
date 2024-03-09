@@ -1,0 +1,15 @@
+
+        func absoluteValue(number x)
+        begin
+            if x >= 0
+                return x
+            else
+                return -x
+        end
+
+        func main()
+        begin
+            var num <- -10
+            var absValue <- absoluteValue(num)
+        end
+        

@@ -1,0 +1,23 @@
+
+        func multiplyByThree(number x)
+        begin
+            return x * 3
+        end
+
+        func addTwoNumbers(number a, number b)
+        begin
+            return a + b
+        end
+
+        func calculateCube(number num)
+        begin
+            return num * num * num
+        end
+        
+        func main()
+        begin
+            var value <- 7
+            var triple <- multiplyByThree(value)
+            var sumResult <- addTwoNumbers(calculateCube(triple), 20)
+        end
+        

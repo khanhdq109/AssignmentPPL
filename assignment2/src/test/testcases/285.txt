@@ -1,0 +1,12 @@
+
+        func isEven(number x)
+        begin
+            return x % 2 = 0
+        end
+
+        func main()
+        begin
+            var numbers <- 7
+            var checkEven <- isEven(numbers)
+        end
+        

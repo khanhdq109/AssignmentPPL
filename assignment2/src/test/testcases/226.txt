@@ -1,0 +1,2 @@
+func complexFunc(number a, string b, bool c) return a * 2
+        

@@ -1,0 +1,17 @@
+
+        func power(number base, number exponent)
+        begin
+            var result <- 1
+            for i until i <= exponent by 1
+            begin
+                result <- result * base
+            end
+            return result
+        end
+        func main()
+        begin
+            var x <- 2
+            var y <- 3
+            var result <- power(x, y)
+        end
+        

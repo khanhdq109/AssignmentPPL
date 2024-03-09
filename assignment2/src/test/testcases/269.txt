@@ -1,0 +1,39 @@
+
+        func reverseArray(number arr[5])
+        begin
+            number reversed[5]
+            for i until i < 5 by 1
+            begin
+                reversed[i] <- arr[4 - i]
+            end
+            return reversed
+        end
+
+        func findMedian(number nums[5])
+        begin
+            var sorted <- sortArray(nums)
+            return sorted[2]
+        end
+
+        func sortArray(number arr[5])
+        begin
+            number sorted[5]
+            sorted <- arr
+            for i until i < 5 by 1
+            begin
+                for j until j < 5 by 1
+                begin
+                    if sorted[i] < sorted[j]
+                        swap(sorted[i], sorted[j])
+                end
+            end
+            return sorted
+        end
+        
+        func main()
+        begin
+            number data[5] <- [12, 5, 8, 15, 3]
+            var reversedArray <- reverseArray(data)
+            var median <- findMedian(reversedArray)
+        end
+        

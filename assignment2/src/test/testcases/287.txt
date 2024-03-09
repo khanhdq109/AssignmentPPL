@@ -1,0 +1,12 @@
+
+        func powerOfThree(number exp)
+        begin
+            return 3 * exp
+        end
+
+        func main()
+        begin
+            var exponent <- 4
+            var result <- powerOfThree(exponent)
+        end
+        

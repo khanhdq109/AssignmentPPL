@@ -1,0 +1,11 @@
+
+        
+        
+        func main()
+        begin
+            var x <- 8
+            var y <- 3
+            var quotient <- x / y
+            var remainder <- x % y
+        end
+        

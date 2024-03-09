@@ -1,0 +1,7 @@
+func processValue(bool flag, number data) begin
+            if flag
+                return data
+            else
+                return 0
+        end
+        
