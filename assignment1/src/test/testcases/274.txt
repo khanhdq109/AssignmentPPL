@@ -1,0 +1,19 @@
+
+        func calculateArea(number radius)
+        begin
+            return 3.14 * radius * radius
+        end
+
+        func calculateVolume(number radius, number height)
+        begin
+            return calculateArea(radius) * height
+        end
+
+        func main()
+        begin
+            number r <- 5
+            number h <- 10
+            var area <- calculateArea(r)
+            var volume <- calculateVolume(r, h)
+        end
+        

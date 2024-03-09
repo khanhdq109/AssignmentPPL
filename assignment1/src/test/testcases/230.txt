@@ -1,0 +1,5 @@
+func printArray(number arr[5]) begin
+            for i until i < 5 by 1
+                writeNumber(arr[i])
+        end
+        

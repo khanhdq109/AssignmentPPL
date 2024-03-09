@@ -1,0 +1,5 @@
+func main() begin
+            string name <- "Alice"
+            number age <- 30
+        end
+        

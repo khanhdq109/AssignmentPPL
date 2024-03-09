@@ -1,0 +1,18 @@
+
+        func findSquareRoot(number num)
+        begin
+            return num * 0.5
+        end
+
+        func isPerfectSquare(number n)
+        begin
+            var root <- findSquareRoot(n)
+            return root * root = n
+        end
+
+        func main()
+        begin
+            number value <- 25
+            var result <- isPerfectSquare(value)
+        end
+        

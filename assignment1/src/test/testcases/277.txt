@@ -1,0 +1,16 @@
+
+        func reverseString(string text)
+        begin
+            var reversed <- ""
+            var i <- length(text) - 1
+            begin
+                reversed <- reversed + text[i]
+                i <- i - 1
+            end
+            return reversed
+        end 
+        func main() begin
+            var original <- "hello"
+            var reversedStr <- reverseString(original)
+        end
+        

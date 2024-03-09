@@ -1,0 +1,22 @@
+
+        func findPrimeFactors(number num)
+        begin
+            number factors[50]
+            var count <- 0
+            for i until i <= num by 1
+            begin
+                begin
+                    factors[count] <- i
+                    count <- count + 1
+                    num <- num / i
+                end
+            end
+            return factors
+        end
+
+        func main()
+        begin
+            number value <- 24
+            var primeFactors <- findPrimeFactors(value)
+        end
+        

@@ -1,0 +1,2 @@
+string message <- "This is a string with newline: \n and tab: \t"
+        

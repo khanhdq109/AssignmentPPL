@@ -1,0 +1,27 @@
+
+        func countVowels(string text)
+        begin
+            var vowels <- 0
+            var i <- 0
+            for i until i < length(text) by 1
+            begin
+                if isVowel(text[i])
+                    vowels <- vowels + 1
+            end
+            return vowels
+        end
+
+        func isVowel(string ch)
+        begin
+            if ch = 5 
+                return true
+            else
+                return false
+        end
+        
+        func main()
+        begin
+            var sentence <- "hello, world!"
+            var numVowels <- countVowels(sentence)
+        end
+        

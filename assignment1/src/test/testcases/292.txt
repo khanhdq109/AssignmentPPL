@@ -1,0 +1,8 @@
+
+        func main()
+        begin
+            var name <- "John"
+            var age <- 25
+            var message <- "Hello, " + name + "! You are " + age + " years old."
+        end
+        

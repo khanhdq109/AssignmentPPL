@@ -1,0 +1,26 @@
+
+        func multiplyByTwo(number x)
+        begin
+            return x * 2
+        end
+        
+        
+        func subtract(number a, number b)
+        begin
+            return a - b
+        end
+        
+        
+        
+        
+        func calculateSquare(number num)
+        begin
+            return num * num
+        end
+        func main()
+        begin
+            var value <- 5
+            var twice <- multiplyByTwo(value)
+            var result <- subtract(calculateSquare(twice), 10)
+        end
+        

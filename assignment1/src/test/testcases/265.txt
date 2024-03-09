@@ -1,0 +1,20 @@
+
+        func powerOfTwo(number exp)
+        begin
+            return 2 * exp
+        end
+        
+        func isOdd(number num)
+        begin
+            if num % 2 = 1
+                return true
+            else
+                return false
+        end
+        func main()
+        begin
+            var x <- 3
+            var result <- powerOfTwo(x)
+            var odd <- isOdd(result)
+        end
+        

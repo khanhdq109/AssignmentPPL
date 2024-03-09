@@ -1,0 +1,4 @@
+func main() begin
+            number result <- processValue(true)
+        end
+        

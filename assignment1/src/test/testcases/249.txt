@@ -1,0 +1,4 @@
+func addNumbers(number a, number b, number c) begin
+            return a + b + c
+        end
+        

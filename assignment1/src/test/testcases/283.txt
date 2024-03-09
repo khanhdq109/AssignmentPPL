@@ -1,0 +1,12 @@
+
+        func square(number x)
+        begin
+            return x * x
+        end
+
+        func main()
+        begin
+            var value <- 5
+            var result <- square(value)
+        end
+        

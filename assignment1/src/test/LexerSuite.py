@@ -309,3 +309,204 @@ class LexerSuite(unittest.TestCase):
         input = """ "Some illegal escape: \\d  \h and more" """
         expect = """Illegal Escape In String: Some illegal escape: \\d"""
         self.assertTrue(TestLexer.test(input, expect, 160))
+        
+    # Others
+    def test_61(self):
+        input = "khanh0109"
+        expect = "khanh0109,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 161))
+        
+    def test_62(self):
+        input = "Glf_"
+        expect = "Glf_,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 162))
+        
+    def test_63(self):
+        input = "fFF1122"
+        expect = "fFF1122,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 163))
+        
+    def test_64(self):
+        input = "p_"
+        expect = "p_,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 164))
+        
+    def test_65(self):
+        input = "zas_______9_______"
+        expect = "zas_______9_______,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 165))
+        
+    def test_66(self):
+        input = ""
+        expect = "<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 166))
+        
+    def test_67(self):
+        input = "1B"
+        expect = "1,B,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 167))
+        
+    def test_68(self):
+        input = "or"
+        expect = "or,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 168))
+        
+    def test_69(self):
+        input = "K92342 reds34234 t_32"
+        expect = "K92342,reds34234,t_32,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 169))
+        
+    def test_70(self):
+        input = "Zvaef@9fvi_82"
+        expect = "Zvaef,Error Token @"
+        self.assertTrue(TestLexer.test(input, expect, 170))
+    
+    def test_71(self):
+        input = "true"
+        expect = "true,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 171))
+        
+    def test_72(self):
+        input = "var"
+        expect = "var,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 172))
+        
+    def test_73(self):
+        input = "or"
+        expect = "or,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 173))
+
+    def test_74(self):
+        input = "elif break"
+        expect = "elif,break,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 174))
+        
+    def test_75(self):
+        input = "string"
+        expect = "string,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 175))
+        
+    def test_76(self):
+        input = "strinG"
+        expect = "strinG,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 176))
+        
+    def test_77(self):
+        input = "if else elif"
+        expect = "if,else,elif,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 177))
+        
+    def test_78(self):
+        input = "brek"
+        expect = "brek,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 178))
+        
+    def test_79(self):
+        input = "by"
+        expect = "by,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 179))
+        
+    def test_80(self):
+        input = "continue      not if dynamic"
+        expect = "continue,not,if,dynamic,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 180))
+    
+    def test_81(self):
+        input = "+"
+        expect = "+,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 181))
+        
+    def test_82(self):
+        input = "+ - * / %    not and   or"
+        expect = "+,-,*,/,%,not,and,or,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 182))
+        
+    def test_83(self):
+        input = "<<=>"
+        expect = "<,<=,>,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 183))
+        
+    def test_84(self):
+        input = "==="
+        expect = "==,=,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 184))
+        
+    def test_85(self):
+        input = "... <-"
+        expect = "...,<-,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 185))
+    
+    def test_86(self):
+        input = "()"
+        expect = "(,),<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 186))
+        
+    def test_87(self):
+        input = "[]"
+        expect = "[,],<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 187))
+        
+    def test_88(self):
+        input = "\n\n"
+        expect = "\n,\n,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 188))
+        
+    def test_89(self):
+        input = "( \n [[[ \n ] )"
+        expect = "(,\n,[,[,[,\n,],),<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 189))
+        
+    def test_90(self):
+        input = "## Hello \n\n"
+        expect = "\n,\n,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 190))
+        
+    def test_91(self):
+        input = "0"
+        expect = "0,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 191))
+        
+    def test_92(self):
+        input = "199"
+        expect = "199,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 192))
+        
+    def test_93(self):
+        input = "12."
+        expect = "12.,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 193))
+        
+    def test_94(self):
+        input = "12.3"
+        expect = "12.3,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 194))
+        
+    def test_95(self):
+        input = "12.3e3"
+        expect = "12.3e3,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 195))
+        
+    def test_96(self):
+        input = "12e3"
+        expect = "12e3,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 196))
+        
+    def test_97(self):
+        input = "12.3e-30"
+        expect = "12.3e-30,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 197))
+        
+    def test_98(self):
+        input = "0000124.6e+1"
+        expect = "0000124.6e+1,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 198))
+        
+    def test_99(self):
+        input = "19.e72"
+        expect = "19.e72,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 199))
+        
+    def test_100(self):
+        input = "2e+"
+        expect = "2,e,+,<EOF>"
+        self.assertTrue(TestLexer.test(input, expect, 200))

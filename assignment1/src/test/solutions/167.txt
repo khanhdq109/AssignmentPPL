@@ -1,3 +1,1 @@
-
-,of,comments,
-,with,escapes,Error Token :
+1,B,<EOF>

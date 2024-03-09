@@ -1,0 +1,4 @@
+func main() begin
+            number result <- addNumbers(1, 2, 3)
+        end
+        

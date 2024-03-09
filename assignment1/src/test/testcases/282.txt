@@ -1,0 +1,18 @@
+
+        func isPalindrome(string text)
+        begin
+            var reversed <- ""
+            var i <- length(text) - 1
+            begin
+                reversed <- reversed + text[i]
+                i <- i - 1
+            end
+            return text = reversed
+        end
+
+        func main()
+        begin
+            var word <- "radar"
+            var palindrome <- isPalindrome(word)
+        end
+        

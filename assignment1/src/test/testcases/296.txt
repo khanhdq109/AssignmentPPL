@@ -1,0 +1,7 @@
+
+        func main()
+        begin
+            var count <- 0
+                count <- count + 1
+        end
+        

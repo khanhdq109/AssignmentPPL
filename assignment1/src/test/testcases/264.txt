@@ -1,0 +1,28 @@
+
+        func sumNumbers(number numbers[5])
+        begin
+            var sum <- 0
+            for i until i < 5 by 1
+            begin
+                sum <- sum + numbers[i]
+            end
+            return sum
+        end
+        func findAverage(number nums[5])
+        begin
+            return sumNumbers(nums) / 5
+        end
+        func calculateFactorial(number n)
+        begin
+            if n <= 1
+                return 1
+            else
+                return n * calculateFactorial(n - 1)
+        end
+        func main()
+        begin
+            number arr[5] <- [1, 2, 3, 4, 5]
+            var avg <- findAverage(arr)
+            var fact <- calculateFactorial(avg)
+        end
+        

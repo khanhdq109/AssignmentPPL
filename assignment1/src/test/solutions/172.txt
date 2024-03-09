@@ -1,1 +1,1 @@
-UpperCaseCamelCase,<EOF>
+var,<EOF>

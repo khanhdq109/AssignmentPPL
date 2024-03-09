@@ -1,0 +1,19 @@
+
+        func isEven(number x)
+            begin
+                return x % 2 = 0
+            end
+            
+        func main()
+            begin
+                var num <- 8
+                if isEven(num)
+                begin
+                    writeString("Number is even.")
+                end
+                else
+                begin
+                    writeString("Number is odd.")
+                end
+            end
+        

@@ -1,0 +1,10 @@
+
+        func main()
+        begin
+            var num <- readNumber()
+            if num > 0
+                writeString("Positive")
+            else
+                writeString("Non-positive")
+        end
+        

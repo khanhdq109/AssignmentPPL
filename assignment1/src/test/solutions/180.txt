@@ -1,1 +1,1 @@
-string,bool,number,<EOF>
+continue,not,if,dynamic,<EOF>

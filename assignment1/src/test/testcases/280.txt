@@ -1,0 +1,17 @@
+
+        func generateRandomNumbers(number n)
+        begin
+            number randomNums[50]
+            for i until i < n by 1
+            begin
+                randomNums[i] <- random()
+            end
+            return randomNums
+        end
+
+        func main()
+        begin
+            var count <- 10
+            var randomList <- generateRandomNumbers(count)
+        end
+        

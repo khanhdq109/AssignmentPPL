@@ -1,1 +1,1 @@
-123,_identifier,<EOF>
+or,<EOF>

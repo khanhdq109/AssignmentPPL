@@ -1,0 +1,4 @@
+func printMessage(string message, number value) begin
+            writeString(message, ": ", value)
+        end
+        

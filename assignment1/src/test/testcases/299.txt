@@ -1,0 +1,14 @@
+
+        func main()
+        begin
+            var grade <- readNumber()
+            if grade >= 90
+                writeString("A")
+            elif grade >= 80
+                writeString("B")
+            elif grade >= 70
+                writeString("C")
+            else
+                writeString("Fail")
+        end
+        

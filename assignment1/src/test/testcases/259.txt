@@ -1,0 +1,16 @@
+
+        func calculateAverage(number numbers[5])
+        begin
+            var sum <- 0
+            for i until i < 5 by 1
+            begin
+                sum <- sum + numbers[i]
+            end
+            return sum / 5
+        end
+        func main()
+        begin
+            string nums[5] <- [10, 15, 20, 25, 30]
+            var avg <- calculateAverage(nums)
+        end
+        

@@ -1,0 +1,16 @@
+
+        func findDifference(number a, number b)
+        begin
+            if a > b
+                return a - b
+            else
+                return b - a
+        end
+
+        func main()
+        begin
+            number x <- 7
+            number y <- 12
+            var diffResult <- findDifference(x, y)
+        end
+        

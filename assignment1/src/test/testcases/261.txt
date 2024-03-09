@@ -1,0 +1,14 @@
+
+        func isEven(number num)
+        begin
+            if num % 2 = 0
+                return true
+            else
+                return false
+        end
+        func main()
+        begin
+            var x <- 7
+            var result <- isEven(x)
+        end
+        

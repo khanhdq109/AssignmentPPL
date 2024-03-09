@@ -1,0 +1,18 @@
+
+        func generateMultiples(number base, number count)
+        begin
+            number multiples[10]
+            for i until i < 10 by 1
+            begin
+                multiples[i] <- base * (i + 1)
+            end
+            return multiples
+        end
+
+        func main()
+        begin
+            var startingValue <- 5
+            var numMultiples <- 10
+            var resultMultiples <- generateMultiples(startingValue, numMultiples)
+        end
+        

@@ -1,1 +1,1 @@
-string bool number
+continue      not if dynamic

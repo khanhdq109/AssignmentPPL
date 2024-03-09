@@ -1,0 +1,14 @@
+
+        func multiplyThreeNumbers(number a, number b, number c)
+        begin
+            return a * b * c
+        end
+
+        func main()
+        begin
+            var x <- 2
+            var y <- 3
+            var z <- 5
+            var result <- multiplyThreeNumbers(x, y, z)
+        end
+        

@@ -1,0 +1,12 @@
+
+        func isNegative(number x)
+        begin
+            return x < 0
+        end
+
+        func main()
+        begin
+            var num <- -15
+            var checkNegative <- isNegative(num)
+        end
+        

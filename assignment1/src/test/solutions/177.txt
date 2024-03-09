@@ -1,1 +1,1 @@
-for,until,break,continue,by,dynamic,<EOF>
+if,else,elif,<EOF>

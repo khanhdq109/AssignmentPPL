@@ -1,0 +1,28 @@
+
+        func findMax(number arr[5])
+        begin
+            var max <- arr[0]
+            for i until i < 5 by 1
+            begin
+                if arr[i] > max
+                    max <- arr[i]
+            end
+            return max
+        end
+        func findMin(number nums[5])
+        begin
+            var min <- nums[0]
+            for i until i < 5 by 1
+            begin
+                if nums[i] < min
+                    min <- nums[i]
+            end
+            return min
+        end
+        func main()
+        begin
+            number numbers[5] <- [10, 5, 8, 15, 3]
+            var maxVal <- findMax(numbers)
+            var minVal <- findMin(numbers)
+        end
+        

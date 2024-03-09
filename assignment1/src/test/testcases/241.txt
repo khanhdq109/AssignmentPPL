@@ -1,0 +1,5 @@
+func main() begin
+            number x <- 1
+            number y <- 2
+        end
+        
