@@ -56,13 +56,15 @@ exp3: exp3 (ADD | SUB) exp4 | exp4;
 exp4: exp4 (MUL | DIV | MOD) exp5 | exp5;
 exp5: NOT exp5 | exp6;
 exp6: SUB exp6 | exp7;
-exp7: (IDENTIFIER | callstmt) LSB explistprime RSB | exp8;
-exp8: IDENTIFIER | FLOATLIT | boollit | STRINGLIT | LSB explist RSB | LB exp RB | callstmt;
+exp7: (IDENTIFIER | callexp) LSB explistprime RSB | exp8;
+exp8: IDENTIFIER | FLOATLIT | boollit | STRINGLIT | arraylit | LB exp RB | callexp;
 
 // Others
 boollit: TRUE | FALSE;
+arraylit: LSB explist RSB;
 typ: NUMBER | BOOL | STRING;
-lhs: IDENTIFIER | (IDENTIFIER | callstmt) LSB explistprime RSB;
+lhs: IDENTIFIER | (IDENTIFIER | callexp) LSB explistprime RSB;
+callexp: IDENTIFIER LB explist RB;
 
 ///////////////////////// LEXER /////////////////////////
 // Comments

@@ -199,6 +199,11 @@ class ZCodeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ZCodeParser#arraylit.
+    def visitArraylit(self, ctx:ZCodeParser.ArraylitContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ZCodeParser#typ.
     def visitTyp(self, ctx:ZCodeParser.TypContext):
         return self.visitChildren(ctx)
@@ -206,6 +211,11 @@ class ZCodeVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ZCodeParser#lhs.
     def visitLhs(self, ctx:ZCodeParser.LhsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ZCodeParser#callexp.
+    def visitCallexp(self, ctx:ZCodeParser.CallexpContext):
         return self.visitChildren(ctx)
 
 
