@@ -6,7 +6,8 @@ class ASTGeneration(ZCodeVisitor):
     ############################# PROGRAM ##############################
     # program: newlinelist decllistprime EOF;
     def visitProgram(self, ctx: ZCodeParser.ProgramContext):
-        pass
+        decl = self.visit(ctx.decllistprime())
+        return Program(decl)
     
     
     ############################### LIST ###############################
