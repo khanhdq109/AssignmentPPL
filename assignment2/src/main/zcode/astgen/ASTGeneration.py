@@ -12,113 +12,183 @@ class ASTGeneration(ZCodeVisitor):
     ############################### LIST ###############################
     # decllist: decllistprime | ;
     def visitDecllist(self, ctx: ZCodeParser.DecllistContext):
-        pass
+        if ctx.getChildCount() == 0:
+            return []
+        return self.visit(ctx.decllistprime())
     
     # decllistprime: decl decllistprime | decl;
     def visitDecllistprime(self, ctx: ZCodeParser.DecllistprimeContext):
-        pass
+        if ctx.getChildCount() == 1:
+            return [self.visit(ctx.decl())]
+        return [self.visit(ctx.decl())] + self.visit(ctx.decllistprime())
     
     # numlist: numlistprime | ;
     def visitNumlist(self, ctx: ZCodeParser.NumlistContext):
-        pass
+        if ctx.getChildCount() == 0:
+            return []
+        return self.visit(ctx.numlistprime())
     
     # numlistprime: FLOATLIT COMMA numlistprime | FLOATLIT;
     def visitNumlistprime(self, ctx: ZCodeParser.NumlistprimeContext):
-        pass
+        if ctx.getChildCount() == 1:
+            return [NumberLiteral(float(ctx.FLOATLIT().getText()))]
+        return [NumberLiteral(float(ctx.FLOATLIT().getText()))] + self.visit(ctx.numlistprime())
     
     # paramdecllist: paramdecllistprime | ;
     def visitParamdecllist(self, ctx: ZCodeParser.ParamdecllistContext):
-        pass
+        if ctx.getChildCount() == 0:
+            return []
+        return self.visit(ctx.paramdecllistprime())
     
     # paramdecllistprime: paramdecl COMMA paramdecllistprime | paramdecl;
     def visitParamdecllistprime(self, ctx: ZCodeParser.ParamdecllistprimeContext):
-        pass
-    
-    # newlinelist: newlinelistprime | ;
-    def visitNewlinelist(self, ctx: ZCodeParser.NewlinelistContext):
-        pass
-    
-    # newlinelistprime: NEWLINE newlinelistprime | NEWLINE;
-    def visitNewlinelistprime(self, ctx: ZCodeParser.NewlinelistprimeContext):
-        pass
+        if ctx.getChildCount() == 1:
+            return [self.visit(ctx.paramdecl())]
+        return [self.visit(ctx.paramdecl())] + self.visit(ctx.paramdecllistprime())
     
     # stmtlist: stmtlistprime | ;
     def visitStmtlist(self, ctx: ZCodeParser.StmtlistContext):
-        pass
+        if ctx.getChildCount() == 0:
+            return []
+        return self.visit(ctx.stmtlistprime())
     
     # stmtlistprime: stmt stmtlistprime | stmt;
     def visitStmtlistprime(self, ctx: ZCodeParser.StmtlistprimeContext):
-        pass
+        if ctx.getChildCount() == 1:
+            return [self.visit(ctx.stmt())]
+        return [self.visit(ctx.stmt())] + self.visit(ctx.stmtlistprime())
     
     # explist: explistprime | ;
     def visitExplist(self, ctx: ZCodeParser.ExplistContext):
-        pass
+        if ctx.getChildCount() == 0:
+            return []
+        return self.visit(ctx.explistprime())
     
     # explistprime: exp COMMA explistprime | exp;
     def visitExplistprime(self, ctx: ZCodeParser.ExplistprimeContext):
-        pass
+        if ctx.getChildCount() == 1:
+            return [self.visit(ctx.exp())]
+        return [self.visit(ctx.exp())] + self.visit(ctx.explistprime())
     
     
     ############################ DECLARATION ###########################
     # decl: (vardecl | arrdecl | funcdecl) newlinelistprime;
     def visitDecl(self, ctx: ZCodeParser.DeclContext):
-        pass
+        return self.visit(ctx.getChild(0))
     
     # vardecl: (typ | DYNAMIC) IDENTIFIER (ASSIGN exp)? | VAR IDENTIFIER ASSIGN exp;
     def visitVardecl(self, ctx: ZCodeParser.VardeclContext):
-        pass
+        name = Id(ctx.IDENTIFIER().getText())
+        varType = None
+        if ctx.typ():
+            varType = self.visit(ctx.typ())
+        modifier = None
+        if ctx.ASSIGN():
+            varInit = self.visit(ctx.exp())
+        return VarDecl(name, varType, modifier, varInit)
     
     # arrdecl: typ IDENTIFIER LSB numlistprime RSB (ASSIGN exp)?;
     def visitArrdecl(self, ctx: ZCodeParser.ArrdeclContext):
-        pass
+        name = Id(ctx.IDENTIFIER().getText())
+        size = self.visit(ctx.numlistprime())
+        eleType = self.visit(ctx.typ())
+        varType = ArrayType(size, eleType)
+        modifier = None
+        if ctx.ASSIGN():
+            varInit = self.visit(ctx.exp())
+        return VarDecl(name, varType, modifier, varInit)
     
     # paramdecl: typ IDENTIFIER (LSB numlistprime RSB)?;
     def visitParamdecl(self, ctx: ZCodeParser.ParamdeclContext):
-        pass
+        name = Id(ctx.IDENTIFIER().getText())
+        if ctx.LSB():
+            size = self.visit(ctx.numlistprime())
+            eleType = self.visit(ctx.typ())
+            varType = ArrayType(size, eleType)
+        else:
+            varType = self.visit(ctx.typ())
+        modifier = None
+        varInit = None
+        return VarDecl(name, varType, modifier, varInit)
     
+    # funcdecl: FUNC IDENTIFIER LB paramdecllist RB newlinelist (returnstmt | blockstmt)?;
     def visitFuncdecl(self, ctx: ZCodeParser.FuncdeclContext):
-        pass
+        name = Id(ctx.IDENTIFIER().getText())
+        param = self.visit(ctx.paramdecllist())
+        body = None
+        if ctx.returnstmt():
+            body = self.visit(ctx.returnstmt())
+        elif ctx.blockstmt():
+            body = self.visit(ctx.blockstmt())
+        return FuncDecl(name, param, body)
     
     ############################# STATEMENT ############################
     # stmt: notnewlinestmt newlinelistprime;
     def visitStmt(self, ctx: ZCodeParser.StmtContext):
-        pass
+        return self.visit(ctx.notnewlinestmt())
     
     # notnewlinestmt: vardecl | arrdecl | assignstmt | ifstmt | forstmt | breakstmt | continuestmt | returnstmt | callstmt | blockstmt;
     def visitNotnewlinestmt(self, ctx: ZCodeParser.NotnewlinestmtContext):
-        pass
+        return self.visit(ctx.getChild(0))
     
     # assignstmt: lhs ASSIGN exp;
     def visitAssignstmt(self, ctx: ZCodeParser.AssignstmtContext):
-        pass
+        lhs = self.visit(ctx.lhs())
+        exp = self.visit(ctx.exp())
+        return Assign(lhs, exp)
     
     # ifstmt: IF exp newlinelist notnewlinestmt (newlinelistprime ELIF exp newlinelist notnewlinestmt)* (newlinelistprime ELSE newlinelist notnewlinestmt)?;
     def visitIfstmt(self, ctx: ZCodeParser.IfstmtContext):
-        pass
+        explist = ctx.exp()
+        stmtlist = ctx.notnewlinestmt()
+        # if
+        expr = explist[0]
+        thenStmt = stmtlist[0]
+        # elif
+        elifStmt = []
+        if ctx.ELIF():
+            if ctx.ELSE():
+                elifStmt = list(zip(explist[1:], stmtlist[1:-1]))
+            else: elifStmt = list(zip(explist[1:], stmtlist[1:]))
+        # else
+        elseStmt = None
+        if ctx.ELSE():
+            elseStmt = stmtlist[-1]
+        return If(expr, thenStmt, elifStmt, elseStmt)
     
     # forstmt: FOR IDENTIFIER UNTIL exp BY exp newlinelist notnewlinestmt;
     def visitForstmt(self, ctx: ZCodeParser.ForstmtContext):
-        pass
+        name = Id(ctx.IDENTIFIER().getText())
+        condExpr = self.visit(ctx.exp(0))
+        updExpr = self.visit(ctx.exp(1))
+        body = self.visit(ctx.notnewlinestmt())
+        return For(name, condExpr, updExpr, body)
     
     # breakstmt: BREAK;
     def visitBreakstmt(self, ctx: ZCodeParser.BreakstmtContext):
-        pass
+        return Break()
     
     # continuestmt: CONTINUE;
     def visitContinuestmt(self, ctx: ZCodeParser.ContinuestmtContext):
-        pass
+        return Continue()
     
     # returnstmt: RETURN exp?;
     def visitReturnstmt(self, ctx: ZCodeParser.ReturnstmtContext):
-        pass
+        if ctx.getChildCount == 1:
+            return None
+        expr = self.visit(ctx.exp())
+        return Return(expr)
     
     # callstmt: IDENTIFIER LB explist RB;
     def visitCallstmt(self, ctx: ZCodeParser.CallstmtContext):
-        pass
+        name = Id(ctx.IDENTIFIER().getText())
+        args = self.visit(ctx.explist())
+        return CallStmt(name, args)
     
     # blockstmt: BEGIN newlinelistprime stmtlist END;
     def visitBlockstmt(self, ctx: ZCodeParser.BlockstmtContext):
-        pass
+        stmt = self.visit(ctx.stmtlist())
+        return Block(stmt)
     
     
     ############################# EXPRESSION ###########################
