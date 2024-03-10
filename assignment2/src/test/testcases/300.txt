@@ -1,2 +1,10 @@
-number a
+
+        func main()
+        begin
+            var i <- 1
+            begin
+                writeNumber(i)
+                i <- i + 1
+            end
+        end
         

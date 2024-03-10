@@ -81,9 +81,13 @@ class ASTGeneration(ZCodeVisitor):
     def visitVardecl(self, ctx: ZCodeParser.VardeclContext):
         name = Id(ctx.IDENTIFIER().getText())
         varType = None
+        modifier = None
         if ctx.typ():
             varType = self.visit(ctx.typ())
-        modifier = None
+        elif ctx.DYNAMIC():
+            modifier = ctx.DYNAMIC().getText()
+        elif ctx.VAR():
+            modifier = ctx.VAR().getText()
         varInit = None
         if ctx.ASSIGN():
             varInit = self.visit(ctx.exp())
@@ -142,8 +146,8 @@ class ASTGeneration(ZCodeVisitor):
     
     # ifstmt: IF exp newlinelist notnewlinestmt (newlinelistprime ELIF exp newlinelist notnewlinestmt)* (newlinelistprime ELSE newlinelist notnewlinestmt)?;
     def visitIfstmt(self, ctx: ZCodeParser.IfstmtContext):
-        explist = ctx.exp()
-        stmtlist = ctx.notnewlinestmt()
+        explist = [self.visit(exp) for exp in ctx.exp()]
+        stmtlist = [self.visit(stmt) for stmt in ctx.notnewlinestmt()]
         # if
         expr = explist[0]
         thenStmt = stmtlist[0]
@@ -177,7 +181,7 @@ class ASTGeneration(ZCodeVisitor):
     
     # returnstmt: RETURN exp?;
     def visitReturnstmt(self, ctx: ZCodeParser.ReturnstmtContext):
-        if ctx.getChildCount == 1:
+        if ctx.getChildCount() == 1:
             return None
         expr = self.visit(ctx.exp())
         return Return(expr)
@@ -237,7 +241,7 @@ class ASTGeneration(ZCodeVisitor):
     
     # exp5: NOT exp5 | exp6;
     def visitExp5(self, ctx: ZCodeParser.Exp5Context):
-        if ctx.getChildCount == 1:
+        if ctx.getChildCount() == 1:
             return self.visit(ctx.exp6())
         operand = self.visit(ctx.exp5())
         return UnaryOp(ctx.NOT().getText(), operand)
@@ -251,7 +255,7 @@ class ASTGeneration(ZCodeVisitor):
     
     # exp7: (IDENTIFIER | callexp) LSB explistprime RSB | exp8;
     def visitExp7(self, ctx: ZCodeParser.Exp7Context):
-        if ctx.getChildCount == 1:
+        if ctx.getChildCount() == 1:
             return self.visit(ctx.exp8())
         if ctx.callexp():
             arr = self.visit(ctx.callexp())

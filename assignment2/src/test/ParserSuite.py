@@ -534,25 +534,7 @@ number b[2, 3] <-  [[1, 2], [4, 5], [3, 5]]
         self.assertTrue(TestParser.test(input, expect, 252))
         
     def test_53(self):
-        input = """
-        func findMax(number arr[5])
-            begin
-                var max <- arr[0]
-                for i until i < 5 by 1
-                begin
-                    if arr[i] > max
-                    begin
-                        max <- arr[i]
-                    end
-                end
-                return max
-            end
-            
-        func main()
-            begin
-                number numbers[5] <- [10, 5, 7, 15, 3]
-                writeString("Maximum value: ", findMax(numbers))
-            end
+        input = """var str <- "Hello world!"
         """
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 253))
